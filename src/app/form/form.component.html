@@ -1,1 +1,15 @@
-<p>form works!</p>
+<h3>Form Component</h3>
+<div class="m-3">
+    <form action="">
+        <div class="row col-md-4">
+            <label for="" class="form-label">Car Name: </label>
+            <input type="text" name="carname" [(ngModel)]="carName" class="form-control ">
+        </div>
+        <br>
+        <div class="row col-md-2">
+            <button class="btn btn-success" (click)="addCar()">Submit</button>
+        </div>
+    </form>
+</div>
+
+<br><br>
