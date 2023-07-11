@@ -1,0 +1,111 @@
+<h1 [innerText]="title"></h1>
+<button [disabled]="isDisabled">Click me</button>
+<p [innerText]="'Welcome to '+ ' Angular'"></p>
+<p>
+    {{getTitle()}}
+</p>
+<br>
+<input type="text" [(ngModel)]="title">
+
+<p>
+    100 X 80 = {{100*80}}
+</p>
+<p>
+    Largest number : {{getMax([100,200,500,360,750])}}
+</p>
+<p style.color="{{color}}">this is red</p>
+
+<!-- ! html events-->
+<button (click)="clickMe(); clickCountCopy=clickCount">click me</button>
+<h1>{{clickCount}} times clicked</h1>
+<h1>{{clickCount}} times clicked (Copy)</h1>
+
+<!-- ! input handling -->
+Type something : <input type="text" (input)="handleInput($event); value1=$any($event.target).value">
+<p>{{value}} </p>
+<p>Without handleInput function : {{value1}} </p>
+
+<!-- ! ngFor -->
+<ul>
+    <li *ngFor="let movie of movies">
+        {{movie.title}} - {{movie.director}}
+    </li>
+</ul>
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>S.No</th>
+                <th>Title</th>
+                <th>Director</th>
+                <th>Cast</th>
+                <th>Release Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr [ngClass]="{'table-primary':f,'table-warning':l}"
+                *ngFor="let movie of movies; let i=index; let o=odd;let e= even;let f=first; let l = last">
+                <td>{{i+1}}</td>
+                <td>{{movie.title}}</td>
+                <td>{{movie.director}}</td>
+                <td>{{movie.cast}}</td>
+                <td>{{movie.releaseDate}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<input type="text" [(ngModel)]="num">
+<div [ngSwitch]="num">
+    <div *ngSwitchCase="1">One</div>
+    <div *ngSwitchCase="2">Two</div>
+    <div *ngSwitchCase="3">Three</div>
+    <div *ngSwitchCase="4">Four</div>
+</div>
+
+<!-- ! ngIf -->
+
+<h1>ngIf examles</h1>
+<div class="row">
+    <label for=""> Checkbox <input type="checkbox" [(ngModel)]="showMe"></label>
+</div>
+{{showMe}}
+<div *ngIf="showMe; then thenBlock; else elseBlock"></div>
+<!-- <p *ngIf="showMe; else elseBlock">show me is checked</p> -->
+<!-- <p *ngIf="!showMe">show me is not checked</p> -->
+<ng-template #thenBlock>
+    <p>show me is checked</p>
+</ng-template>
+
+<ng-template #elseBlock>
+    <p>show me is not checked</p>
+</ng-template>
+
+<!-- ! ngClass -->
+<div [ngClass]="['primary','big']">sample text</div>
+<div [ngClass]="{'primary':true}">sample text</div>
+Red <input type="checkbox" name="" [(ngModel)]="enableRed" id="">
+Big <input type="checkbox" name="" [(ngModel)]="enableBig" id="">
+<div [ngClass]="{'primary':enableRed,'big':enableBig}">
+    another sample text
+</div>
+
+<!-- ! ngStyle -->
+<div [ngStyle]="{'color':status==='error'?'red':'green'}">smaple text for ngstyle</div>
+
+<!-- !pipes -->
+<p> Unformatted Date: {{toDate}} </p>
+<p> Formatted Date: {{toDate|date}} </p>
+<p> Medium Date: {{toDate|date:'medium'}} </p>
+<p> Short Date: {{toDate|date:'short'}} </p>
+<p> Full Date: {{toDate|date:'fullDate'}} </p>
+<p> Long Date: {{toDate|date:'longDate'}} </p>
+
+<p>{{message|uppercase}}</p>
+<p>{{message|lowercase}}</p>
+<p>{{message|slice:11:20}}</p>
+
+<p>Price: {{price}}</p>
+<p>Price: {{price|currency}}</p>
+<p>Price: {{price|currency:'RS'}}</p>
