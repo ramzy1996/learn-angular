@@ -15,16 +15,18 @@ export class TemplateDrivenFormComponent implements OnInit {
 
     contact!: Contact;
     onSubmit(form: NgForm) {
-        console.log(form.value)
+        if (form.valid) {
+            console.log(form)
+        }
     }
 
     ngOnInit(): void {
         this.contact = {
-            "firstName": "Ramzy",
+            "firstName": "",
             "lastName": "Ahmed",
             "email": "ramzyahamed96@gmail.com",
-            "gender": "male",
-            "isMarried": true,
+            "gender": "",
+            "isMarried": false,
             "country": "1",
             "address": {
                 "city": "Weligama",
