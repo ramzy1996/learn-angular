@@ -6,6 +6,8 @@ import { HelloWorldComponent } from './hello-world/hello-world.component';
 import { FormsModule } from '@angular/forms';
 import { FormComponent } from './form/form.component';
 import { ListComponent } from './list/list.component';
+import { HeadingComponent } from './heading/heading.component';
+import { TemplateDrivenFormComponent } from './template-driven-form/template-driven-form.component';
 
 
 @NgModule({
@@ -14,6 +16,8 @@ import { ListComponent } from './list/list.component';
         HelloWorldComponent,
         FormComponent,
         ListComponent,
+        HeadingComponent,
+        TemplateDrivenFormComponent,
     ],
     imports: [
         BrowserModule,
